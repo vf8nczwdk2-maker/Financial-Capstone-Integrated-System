@@ -16,8 +16,8 @@ warnings.filterwarnings("ignore")
 
 # ── Page Config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Financial Capstone · Screener + DCF + Optimizer",
-    page_icon="📊",
+    page_title="Financial Capstone — Screener + DCF + Optimizer",
+    page_icon=":bar_chart:",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -25,202 +25,191 @@ st.set_page_config(
 # ── CSS ───────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
+}
 
-.stApp { background-color: #0a0e1a; color: #e2e8f0; }
+/* App background */
+.stApp { background-color: #111827; color: #f0f4f8; }
 
 #MainMenu, footer, header { visibility: hidden; }
 
-/* ── Sidebar ── */
+/* Sidebar */
 [data-testid="stSidebar"] {
-    background-color: #0f1421 !important;
-    border-right: 1px solid #1e2d45 !important;
+    background-color: #1a2234 !important;
+    border-right: 1px solid #2d3748 !important;
 }
 [data-testid="stSidebar"] label,
-[data-testid="stSidebar"] p { color: #94a3b8 !important; font-size: 0.82rem; }
+[data-testid="stSidebar"] p { color: #a0aec0 !important; font-size: 0.83rem; }
 [data-testid="stSidebar"] h2 {
-    color: #e2e8f0 !important; font-size: 1rem; font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
+    color: #f0f4f8 !important;
+    font-size: 1rem;
+    font-weight: 700;
 }
 [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3 {
-    color: #64748b !important;
-    font-size: 0.68rem !important;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.2rem !important;
-}
-[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] { background: #1e2d45; }
-
-/* ── Button ── */
-.stButton > button {
-    background: linear-gradient(135deg, #2563eb, #4f46e5);
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    padding: 0.55rem 1.2rem;
-    font-weight: 600;
-    font-size: 0.85rem;
-    width: 100%;
-    transition: opacity 0.2s;
-}
-.stButton > button:hover { opacity: 0.88; }
-
-/* ── Tabs ── */
-.stTabs [data-baseweb="tab-list"] {
-    background: #0f1421;
-    border-radius: 8px;
-    padding: 4px;
-    gap: 4px;
-    border: 1px solid #1e2d45;
-}
-.stTabs [data-baseweb="tab"] {
-    background: transparent;
-    color: #64748b;
-    font-weight: 600;
-    border-radius: 6px;
-    padding: 0.5rem 1.2rem;
-    font-size: 0.85rem;
-    font-family: 'Inter', sans-serif;
-}
-.stTabs [aria-selected="true"] {
-    background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
-    color: #ffffff !important;
-}
-
-/* ── Hero ── */
-.hero {
-    background: linear-gradient(135deg, #0f1a2e 0%, #111827 100%);
-    border: 1px solid #1e2d45;
-    border-left: 4px solid #2563eb;
-    border-radius: 10px;
-    padding: 1.5rem 2rem;
-    margin-bottom: 1.5rem;
-}
-.hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #f1f5f9;
-    margin: 0 0 0.3rem;
-}
-.hero p { color: #94a3b8; font-size: 0.875rem; margin: 0; line-height: 1.6; }
-
-/* ── Metric Cards ── */
-.metric-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0.85rem;
-    margin: 1rem 0 1.5rem;
-}
-.metric-card {
-    background: #0f1421;
-    border: 1px solid #1e2d45;
-    border-radius: 8px;
-    padding: 1rem 1.2rem;
-}
-.metric-label {
-    font-size: 0.67rem;
+    color: #718096 !important;
+    font-size: 0.7rem !important;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #64748b;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem !important;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    background: #1a2234;
+    border-radius: 6px;
+    padding: 3px;
+    gap: 3px;
+    border: 1px solid #2d3748;
+}
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    color: #718096;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.84rem;
+}
+.stTabs [aria-selected="true"] {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+/* Hero banner */
+.hero {
+    background: #1a2234;
+    border: 1px solid #2d3748;
+    border-left: 4px solid #2563eb;
+    border-radius: 8px;
+    padding: 1.4rem 1.8rem;
+    margin-bottom: 1.2rem;
+}
+.hero h1 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #f0f4f8;
+    margin: 0 0 0.3rem;
+}
+.hero p {
+    color: #a0aec0;
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Metric cards */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 0.75rem;
+    margin: 0.9rem 0 1.3rem;
+}
+.metric-card {
+    background: #1a2234;
+    border: 1px solid #2d3748;
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+}
+.metric-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #718096;
+    margin-bottom: 0.3rem;
 }
 .metric-value {
-    font-size: 1.65rem;
+    font-size: 1.55rem;
     font-weight: 700;
-    color: #f1f5f9;
+    color: #f0f4f8;
     line-height: 1.1;
-    font-family: 'Space Grotesk', sans-serif;
 }
-.metric-value.green  { color: #22c55e; }
-.metric-value.blue   { color: #3b82f6; }
-.metric-value.amber  { color: #f59e0b; }
-.metric-value.red    { color: #ef4444; }
+.metric-value.green { color: #48bb78; }
+.metric-value.blue  { color: #4299e1; }
+.metric-value.amber { color: #ed8936; }
+.metric-value.red   { color: #fc8181; }
 
-/* ── Section Headers ── */
+/* Section headers */
 .section-header {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: #e2e8f0;
-    margin: 1.5rem 0 0.75rem;
-    padding-bottom: 0.35rem;
-    border-bottom: 1px solid #1e2d45;
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: 0.02em;
+    margin: 1.4rem 0 0.65rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #2d3748;
+    letter-spacing: 0.01em;
 }
 
-/* ── Valuation Badges ── */
+/* Valuation badges */
 .badge {
     display: inline-block;
-    padding: 0.2rem 0.65rem;
+    padding: 0.18rem 0.6rem;
     border-radius: 4px;
     font-size: 0.65rem;
     font-weight: 700;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
 }
-.badge-under  { background: #14532d; color: #4ade80; border: 1px solid #16a34a; }
-.badge-over   { background: #450a0a; color: #fca5a5; border: 1px solid #dc2626; }
-.badge-na     { background: #1e1b4b; color: #a5b4fc; border: 1px solid #4f46e5; }
+.badge-under { background: #1c4532; color: #68d391; border: 1px solid #2f855a; }
+.badge-over  { background: #3d1515; color: #fc8181; border: 1px solid #c53030; }
+.badge-na    { background: #1a202c; color: #90cdf4; border: 1px solid #2b6cb0; }
 
-/* ── Info/Warning boxes ── */
+/* Info / warning boxes */
 .info-box {
-    background: #0f1e35;
-    border: 1px solid #1d4ed8;
+    background: #1a2a45;
+    border: 1px solid #2b6cb0;
     border-left: 4px solid #2563eb;
     border-radius: 6px;
-    padding: 0.9rem 1.2rem;
+    padding: 0.85rem 1.1rem;
     font-size: 0.85rem;
-    color: #93c5fd;
+    color: #90cdf4;
     line-height: 1.6;
-    margin: 0.75rem 0;
+    margin: 0.65rem 0;
 }
 .warn-box {
-    background: #1c1007;
-    border: 1px solid #92400e;
-    border-left: 4px solid #f59e0b;
+    background: #2d1f00;
+    border: 1px solid #c05621;
+    border-left: 4px solid #ed8936;
     border-radius: 6px;
-    padding: 0.9rem 1.2rem;
+    padding: 0.85rem 1.1rem;
     font-size: 0.85rem;
-    color: #fcd34d;
+    color: #fbd38d;
     line-height: 1.6;
-    margin: 0.75rem 0;
+    margin: 0.65rem 0;
 }
 
-/* ── Pipeline Steps ── */
+/* Pipeline step badges */
 .pipeline-row {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin: 0.75rem 0;
-    font-size: 0.82rem;
-    color: #94a3b8;
+    gap: 0.45rem;
+    margin: 0.65rem 0;
+    font-size: 0.81rem;
+    color: #a0aec0;
 }
 .pipe-step {
-    background: #1e2d45;
-    border: 1px solid #334155;
-    border-radius: 5px;
-    padding: 0.25rem 0.7rem;
+    background: #263040;
+    border: 1px solid #2d3748;
+    border-radius: 4px;
+    padding: 0.22rem 0.65rem;
     font-weight: 600;
     font-size: 0.75rem;
     color: #e2e8f0;
     white-space: nowrap;
 }
-.pipe-step.active { background: #1d3a6e; border-color: #2563eb; color: #93c5fd; }
-.pipe-arrow { color: #334155; font-size: 1rem; }
+.pipe-step.active { background: #1a3a6e; border-color: #2563eb; color: #90cdf4; }
+.pipe-arrow { color: #4a5568; font-size: 0.95rem; }
 
-/* ── Data Tables ── */
+/* Dataframe */
 [data-testid="stDataFrame"] {
     border-radius: 6px;
     overflow: hidden;
-    border: 1px solid #1e2d45 !important;
+    border: 1px solid #2d3748 !important;
 }
 
-/* ── Alerts ── */
 .stAlert { border-radius: 6px !important; }
 </style>
 """, unsafe_allow_html=True)
@@ -615,34 +604,42 @@ with tab1:
     # Format and display table
     display_df = screener_df.copy()
 
-    # Color-code P/E column
+    # Safely coerce numeric columns so N/A strings from yfinance don't crash stylers
+    for _col in ["P/E Ratio", "Debt/Equity", "Price ($)", "Market Cap ($B)", "Beta", "Div Yield (%)"]:
+        if _col in display_df.columns:
+            display_df[_col] = pd.to_numeric(display_df[_col], errors="coerce")
+
+    # Color-code P/E column (pandas 2.x: use .map instead of deprecated .applymap)
     def color_pe(val):
-        if pd.isna(val): return "color: #64748b"
-        if val < 15:     return "color: #4ade80"   # cheap
-        if val < 30:     return "color: #fbbf24"   # fair
-        return "color: #f87171"                     # expensive
+        if pd.isna(val): return "color: #718096"
+        if val < 15:     return "color: #48bb78"   # cheap — green
+        if val < 30:     return "color: #ed8936"   # fair  — amber
+        return "color: #fc8181"                     # expensive — red
 
     def color_de(val):
-        if pd.isna(val): return "color: #64748b"
-        if val < 0.5:    return "color: #4ade80"
-        if val < 1.5:    return "color: #fbbf24"
-        return "color: #f87171"
+        if pd.isna(val): return "color: #718096"
+        if val < 0.5:    return "color: #48bb78"
+        if val < 1.5:    return "color: #ed8936"
+        return "color: #fc8181"
 
-    styled = (
-        display_df.style
-        .applymap(color_pe, subset=["P/E Ratio"])
-        .applymap(color_de, subset=["Debt/Equity"])
-        .format({
-            "Price ($)":       lambda x: f"${x:,.2f}" if pd.notna(x) else "—",
-            "P/E Ratio":       lambda x: f"{x:.1f}x"  if pd.notna(x) else "—",
-            "Debt/Equity":     lambda x: f"{x:.2f}x"  if pd.notna(x) else "—",
-            "Market Cap ($B)": lambda x: f"${x:.1f}B"  if pd.notna(x) else "—",
-            "Beta":            lambda x: f"{x:.2f}"    if pd.notna(x) else "—",
-            "Div Yield (%)":   lambda x: f"{x:.2f}%"   if pd.notna(x) else "—",
-        }, na_rep="—")
-        .set_properties(**{"font-size": "0.84rem"})
-    )
-    st.dataframe(styled, use_container_width=True, hide_index=True)
+    if not display_df.empty:
+        styled = (
+            display_df.style
+            .map(color_pe, subset=["P/E Ratio"])
+            .map(color_de, subset=["Debt/Equity"])
+            .format({
+                "Price ($)":       lambda x: f"${x:,.2f}" if pd.notna(x) else "—",
+                "P/E Ratio":       lambda x: f"{x:.1f}x"  if pd.notna(x) else "—",
+                "Debt/Equity":     lambda x: f"{x:.2f}x"  if pd.notna(x) else "—",
+                "Market Cap ($B)": lambda x: f"${x:.1f}B"  if pd.notna(x) else "—",
+                "Beta":            lambda x: f"{x:.2f}"    if pd.notna(x) else "—",
+                "Div Yield (%)":   lambda x: f"{x:.2f}%"   if pd.notna(x) else "—",
+            }, na_rep="—")
+            .set_properties(**{"font-size": "0.84rem"})
+        )
+        st.dataframe(styled, use_container_width=True, hide_index=True)
+    else:
+        st.info("No data loaded yet. Check your ticker list and try again.")
 
     # ── P/E vs Debt/Equity Scatter ────────────────────────────────────────────
     st.markdown('<div class="section-header">P/E vs Debt/Equity — Universe Map</div>', unsafe_allow_html=True)
